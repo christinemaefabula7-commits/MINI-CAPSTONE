@@ -1,0 +1,20 @@
+GEMINI BAKERY EXPRESS — INSTALL FIRST
+
+1) Extract this ZIP. It contains ONE folder named gemini-bakery.
+2) Copy that whole gemini-bakery folder into D:\xampp\htdocs\
+3) Confirm these exact paths exist in Windows File Explorer:
+   D:\xampp\htdocs\gemini-bakery\index.php
+   D:\xampp\htdocs\gemini-bakery\cashier\index.php
+   D:\xampp\htdocs\gemini-bakery\admin\index.php
+4) Start Apache in XAMPP. MySQL is not needed for this UI preview.
+5) Open these addresses in Chrome:
+   http://localhost/gemini-bakery/
+   http://localhost/gemini-bakery/cashier/
+   http://localhost/gemini-bakery/admin/
+
+IMPORTANT: Do not put the extracted folder inside another folder that is already
+named gemini-bakery. The correct structure is htdocs\gemini-bakery\index.php,
+NOT htdocs\gemini-bakery\gemini-bakery\index.php.
+
+This package contains front-end previews. Secure staff authentication, MySQL,
+shared records, and live cross-portal synchronization are not implemented yet.
