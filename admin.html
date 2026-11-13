@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gemini Bakery | Admin Portal</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box} :root{--red:#b91c1c;--darkred:#7f1d1d;--yellow:#facc15;--cream:#fffbeb;--ink:#3b0a0a;--muted:#777;--line:#f1dfd3;--bg:#faf8f5}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Arial,sans-serif}button,input,select{font:inherit}button{cursor:pointer}.hidden{display:none!important}.auth-screen{min-height:100vh;display:grid;place-items:center;padding:24px;background:linear-gradient(135deg,#991b1b,#7f1d1d)}.auth-card{width:min(440px,100%);background:white;border:4px solid var(--yellow);border-radius:24px;padding:30px;box-shadow:0 20px 60px #0003;text-align:center}.auth-card img{width:150px;max-height:90px;object-fit:contain}.branch{display:block;color:var(--red);font-size:11px;font-weight:900;letter-spacing:1.5px;margin:12px 0}.auth-card h1{margin:8px 0;color:var(--red);font-size:27px}.auth-card>p{color:#666;font-size:13px;line-height:1.5}.field{text-align:left;margin:15px 0}.field label{display:block;font-size:12px;font-weight:800;margin-bottom:7px}.field input,.filter-row input,.filter-row select,.panel-head input,.lookup-form input{width:100%;border:1px solid #e7d5c9;border-radius:10px;padding:12px;background:#fff;outline:none}.field input:focus,.lookup-form input:focus{border-color:var(--red);box-shadow:0 0 0 3px #b91c1c12}.btn{border:0;border-radius:10px;padding:11px 16px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:8px}.btn.primary{background:var(--red);color:#fff}.btn.outline{background:#fff;border:1px solid #e8c9b8;color:var(--red)}.btn.full{width:100%;margin-top:10px}.auth-switch{margin-top:18px!important}.auth-switch button{border:0;background:none;color:var(--red);font-weight:900}.demo-note{background:#fff8e1;padding:10px;border-radius:9px;font-size:11px!important}.message{font-size:12px;color:var(--red);min-height:16px}.admin-app{min-height:100vh}.sidebar{width:250px;background:linear-gradient(180deg,#991b1b,#650d0d);color:#fff;position:fixed;inset:0 auto 0 0;padding:22px 15px;display:flex;flex-direction:column;z-index:5}.side-brand{display:flex;align-items:center;gap:10px;padding:5px 8px 25px;border-bottom:1px solid #ffffff30}.admin-logo{width:52px;height:52px;object-fit:contain;flex:0 0 52px;background:#fff;border-radius:12px;padding:4px}.side-brand b{display:block;font-size:13px}.side-brand small{font-size:10px;color:#ffe7a3;letter-spacing:1px}.product-admin-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}.admin-product-card{border:1px solid var(--line);border-radius:13px;overflow:hidden;background:#fff}.admin-product-card img{width:100%;height:120px;object-fit:cover;background:#f8eee8}.admin-product-card .pbody{padding:12px}.admin-product-card h4{font-size:13px;margin:0 0 5px}.admin-product-card p{font-size:11px;color:#777;min-height:30px}.admin-product-card .actions{display:flex;gap:6px;margin-top:10px}.admin-product-card .actions button{flex:1;font-size:11px;padding:8px}.product-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.product-form-grid .field{margin:4px 0}.product-preview{width:100%;max-width:150px;height:110px;object-fit:cover;border:1px dashed #d9b7a8;border-radius:10px;background:#fff8f1}.staff-chip{display:flex;gap:10px;align-items:center;padding:18px 8px;color:#ffe7a3}.staff-chip b,.staff-chip small{display:block}.staff-chip b{font-size:13px;color:white}.staff-chip small{font-size:10px;margin-top:3px}.side-nav{display:grid;gap:6px;margin-top:10px}.side-link{border:0;background:transparent;color:#ffe7a3;padding:13px 12px;border-radius:10px;text-align:left;font-weight:700;display:flex;gap:12px;align-items:center}.side-link.active,.side-link:hover{background:#fff;color:var(--red)}.side-link i{width:18px}.count{margin-left:auto;background:var(--yellow);color:var(--red);padding:2px 7px;border-radius:20px;font-size:11px}.logout-btn{margin-top:auto;background:#ffffff18;border:1px solid #ffffff35;color:white;padding:12px;border-radius:10px;font-weight:800}.main{margin-left:250px;padding:28px;max-width:1600px}.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px;gap:15px}.eyebrow{font-size:10px;letter-spacing:1.5px;color:var(--red);font-weight:900}.topbar h1{font-size:27px;margin:5px 0}.top-actions{display:flex;gap:15px;align-items:center;color:#777;font-size:12px}.public-link{color:var(--red);text-decoration:none;font-weight:800}.view{display:none}.view.active{display:block}.welcome-banner{background:linear-gradient(110deg,#991b1b,#c62828);border:2px solid #f5cb34;color:white;border-radius:18px;padding:25px 30px;display:flex;justify-content:space-between;align-items:center}.welcome-banner h2{margin:7px 0;font-size:25px}.welcome-banner p{margin:0;color:#ffe9c0;font-size:13px}.welcome-banner>i{font-size:55px;color:#facc15;opacity:.9}.light{color:#ffe18b}.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}.stat-card{background:white;border:1px solid var(--line);border-radius:14px;padding:18px;position:relative}.stat-card span{display:block;color:#777;font-size:12px;font-weight:700}.stat-card b{display:block;font-size:30px;margin-top:10px}.stat-card i{position:absolute;right:18px;top:18px;color:#e8b9a5;font-size:20px}.panel{background:white;border:1px solid var(--line);border-radius:15px;padding:20px;margin-bottom:18px;box-shadow:0 4px 14px #4b160a08}.panel h3{margin:0 0 7px;font-size:16px}.panel-head,.section-intro{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:15px}.panel-head p,.section-intro p{font-size:12px;color:#888;margin:4px 0}.section-intro h2{margin:0;font-size:22px}.filter-row{display:flex;gap:8px;min-width:min(460px,55%)}.filter-row input{flex:1}.filter-row select{width:190px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:620px}th,td{text-align:left;padding:12px 10px;border-bottom:1px solid #f2e9e3;font-size:12px}th{color:#8a6b60;font-size:10px;text-transform:uppercase;letter-spacing:.7px}td strong{color:var(--ink)}.status{display:inline-block;padding:5px 9px;border-radius:30px;background:#fff4cf;color:#8a5a00;font-size:10px;font-weight:900}.status.Paid{background:#d9f7e8;color:#087443}.order-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.order-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:17px}.order-top{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #f2e9e3;padding-bottom:12px}.order-no{font-weight:900;color:var(--red)}.muted{color:#888;font-size:11px}.order-details{font-size:12px;line-height:1.8;margin:12px 0}.item-lines{background:#fffaf1;padding:10px;border-radius:9px;font-size:11px;line-height:1.8}.order-actions{display:flex;gap:8px;align-items:center;margin-top:13px}.order-actions select{flex:1;min-width:0;padding:10px;border:1px solid #ead7cb;border-radius:9px}.order-actions .btn{padding:10px}.payment-layout{display:grid;grid-template-columns:1fr 1fr;gap:16px}.lookup-panel,.payment-panel{min-height:300px}.lookup-form{display:flex;gap:8px;margin:18px 0}.lookup-form input{flex:1}.lookup-result{padding:12px;border-radius:10px;background:#fffaf1;font-size:12px;line-height:1.8}.empty-state{color:#999;text-align:center;padding:30px 10px;font-size:12px}.payment-panel .field{margin-top:25px}.profile-panel{max-width:550px}.profile-panel form{max-width:420px}.modal{position:fixed;inset:0;background:#1d0909a8;display:grid;place-items:center;padding:18px;z-index:20}.modal-card{background:white;width:min(450px,100%);border-radius:18px;padding:25px;box-shadow:0 20px 50px #0003}.modal-card h2{text-align:center;color:var(--red);margin:10px 0}.modal-card>p{text-align:center}.success-mark{margin:auto;background:#dcfce7;color:#15803d;width:55px;height:55px;border-radius:50%;display:grid;place-items:center;font-size:24px}.receipt{border:1px dashed #d5b7a7;padding:15px;margin:18px 0;font-size:12px;line-height:1.8}.receipt-row{display:flex;justify-content:space-between;gap:10px}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}.stock-input{width:90px;padding:7px;border:1px solid #ead7cb;border-radius:7px}.low-stock{color:#b91c1c;font-weight:900}@media(max-width:1000px){.stat-grid{grid-template-columns:repeat(2,1fr)}.order-grid{grid-template-columns:1fr}.payment-layout{grid-template-columns:1fr}}@media(max-width:700px){.sidebar{position:static;width:auto;padding:12px}.side-brand{padding-bottom:12px}.staff-chip{padding:10px}.side-nav{display:flex;overflow:auto}.side-link{white-space:nowrap;padding:10px}.logout-btn{position:absolute;right:12px;top:12px;padding:9px}.main{margin:0;padding:17px}.topbar,.section-intro,.panel-head{align-items:flex-start;flex-direction:column}.top-actions{flex-wrap:wrap}.filter-row{min-width:100%;width:100%}.welcome-banner{padding:20px}.welcome-banner>i{display:none}.stat-grid{gap:9px}.stat-card{padding:13px}.stat-card b{font-size:24px}.auth-card{padding:22px}}
+@media print{body *{visibility:hidden}.receipt-card,.receipt-card *{visibility:visible}.modal{position:absolute;background:white}.receipt-card{position:absolute;top:0;box-shadow:none}}
+
+</style>
+
+<style>
+
+:root{--admin-content-max:1500px}
+body{font-size:15px}
+.main-content,.main-area,.content-area{min-width:0}
+.main{margin-left:250px!important;padding:30px clamp(22px,3vw,54px)!important;max-width:none!important}
+.view{width:100%;max-width:var(--admin-content-max);margin:0 auto}
+.section-intro{align-items:center;gap:22px;margin-bottom:22px}
+.section-intro h2{font-size:25px!important}
+.section-intro p,.muted{font-size:14px}
+.panel{padding:22px!important;border-radius:16px}
+.panel-head h3{font-size:19px!important}
+.panel-head p{font-size:13px!important}
+.field label{font-size:14px!important}
+.field input,.field textarea,.filter-row input,.filter-row select,.panel-head input,.lookup-form input{font-size:15px!important;min-height:46px;padding:12px 14px}
+.btn{font-size:14px!important;padding:12px 18px}
+.sidebar .side-link{font-size:15px!important}
+.admin-product-card img{height:155px!important;object-fit:cover}
+.admin-product-card h4{font-size:15px!important}
+.admin-product-card p{font-size:13px!important;line-height:1.5}
+.product-admin-grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))!important;gap:18px!important}
+.product-category-section{grid-column:1/-1}
+.product-category-heading{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:18px 0 12px}
+.product-category-heading h3{font-size:18px!important;margin:0!important}
+.profile-panel{width:min(100%,920px);margin:0 auto;padding:30px!important}
+.profile-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 18px}
+.profile-fields .field:last-child{grid-column:1/-1}
+.profile-image-picker{display:flex;align-items:center;gap:22px;padding:18px;margin-bottom:20px;background:#fffaf0;border:1px solid var(--line);border-radius:14px}
+.profile-image-picker img{width:112px;height:112px;object-fit:cover;border-radius:50%;border:3px solid var(--yellow);background:#fff}
+.profile-image-picker label{display:block;font-weight:800;margin-bottom:8px}
+.profile-image-picker small{display:block;color:#777;margin-top:8px;font-size:12px}
+.product-modal-card{width:min(760px,calc(100vw - 28px));max-height:90vh;overflow:auto;text-align:left}
+.product-modal-card .panel-head{position:sticky;top:0;background:#fff;z-index:2;padding-bottom:12px}
+.product-modal-card textarea{width:100%;border:1px solid #e7d5c9;border-radius:10px;padding:12px;font:inherit;resize:vertical}
+.product-modal-card .field small{display:block;font-size:12px;color:#777;margin-top:6px}
+.product-preview{width:100%;max-width:220px;height:150px;object-fit:contain;border:1px solid var(--line);border-radius:12px;background:#fffaf0;padding:6px}
+.table-wrap table{font-size:14px}
+.order-card,.stat-card{font-size:14px}
+.receipt{font-size:15px!important;line-height:1.65}
+.receipt b,.receipt strong{font-size:16px}
+@media(max-width:900px){.main{margin-left:0!important;padding:22px 16px!important}.profile-fields{grid-template-columns:1fr}.profile-fields .field:last-child{grid-column:auto}}
+@media(max-width:560px){.profile-image-picker{align-items:flex-start;flex-direction:column}.product-form-grid{grid-template-columns:1fr!important}.product-category-heading{align-items:flex-start;flex-direction:column}}
+</style>
+
+
+<style>
+.status{display:inline-flex;padding:7px 12px;border-radius:999px;font-weight:800;background:#ede9fe;color:#5b21b6}
+.order-card .status:where(:not(:empty)){white-space:nowrap}
+.status-pending{background:#6d28d9!important;color:#fff!important}
+.status-preparing{background:#facc15!important;color:#422006!important}
+.status-packed{background:#f97316!important;color:#fff!important}
+.status-ready-to-pick-up,.status-to-deliver{background:#2563eb!important;color:#fff!important}
+.status-order-received,.status-received-completed{background:#15803d!important;color:#fff!important}
+.status-cancelled{background:#b91c1c!important;color:#fff!important}
+</style>
+
+<style>
+#product-editor-panel.modal{position:fixed!important;inset:0!important;background:#1d0909b8!important;display:grid!important;place-items:center!important;padding:18px!important;z-index:100!important}
+#product-editor-panel.hidden{display:none!important}
+</style>
+
+</head>
+<body>
+<div id="auth-screen" class="auth-screen">
+  <form id="auth-form" class="auth-card">
+    <img src="logo.svg" alt="Gemini Bakery" onerror="this.style.display='none'">
+    <span class="branch">PALENGKE BRANCH · LUCENA CITY</span>
+    <h1 id="auth-title">Admin Sign In</h1>
+    <p id="auth-subtitle">Sign in to manage orders, inventory and counter payments.</p>
+    <div id="signup-name-wrap" class="field hidden"><label>Staff Name</label><input id="staff-name" autocomplete="name" placeholder="e.g. Cashier Aira"></div>
+    <div class="field"><label>Username</label><input id="staff-username" required autocomplete="username" placeholder="e.g. cashier-aira"></div>
+    <div class="field"><label>Password</label><input id="staff-password" type="password" required minlength="6" autocomplete="current-password" placeholder="At least 6 characters"></div>
+    <button class="btn primary full" type="submit" id="auth-submit">Sign In</button>
+    <p class="auth-switch"><span id="auth-switch-copy">New staff account?</span> <button type="button" id="toggle-auth">Create account</button></p>
+    <p id="auth-message" class="message" role="status"></p>
+    
+  </form>
+</div>
+
+<div id="admin-app" class="admin-app hidden">
+  <aside class="sidebar">
+    <div class="side-brand"><img src="logo.svg" alt="Gemini Bakery logo" class="admin-logo"><div><b>GEMINI BAKERY</b><small>ADMIN PORTAL</small></div></div>
+    <div class="staff-chip"><i class="fa-solid fa-user-shield"></i><span><b id="staff-display">Staff</b><small id="staff-role">Administrator</small></span></div>
+    <nav class="side-nav">
+      <button class="side-link active" data-view="overview"><i class="fa-solid fa-chart-pie"></i> Overview</button>
+      <button class="side-link" data-view="orders"><i class="fa-solid fa-receipt"></i> Order Management <span id="pending-count" class="count">0</span></button>
+      <button class="side-link" data-view="payment"><i class="fa-solid fa-cash-register"></i> Counter Payment</button>
+      <button class="side-link" data-view="inventory"><i class="fa-solid fa-boxes-stacked"></i> Product Management</button>
+      <button class="side-link" data-view="transactions"><i class="fa-solid fa-clock-rotate-left"></i> Transactions</button>
+      <button class="side-link" data-view="profile"><i class="fa-solid fa-user-gear"></i> My Profile</button>
+    </nav>
+    <button id="logout-btn" class="logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sign Out</button>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div><span class="eyebrow">GEMINI BAKERY EXPRESS · PALENGKE</span><h1 id="page-title">Overview</h1></div><div class="top-actions"><span id="today-label"></span><a href="index.html" target="_blank" class="public-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Public Website</a></div></header>
+
+    <section class="view active" id="view-overview">
+      <div class="welcome-banner"><div><span class="eyebrow light">STORE OPERATIONS</span><h2>Good day, <span id="welcome-staff">Staff</span>!</h2><p>Monitor incoming orders, counter payments and stock levels in one place.</p></div><i class="fa-solid fa-bread-slice"></i></div>
+      <div class="stat-grid">
+        <article class="stat-card"><span>Pending Orders</span><b id="stat-pending">0</b><i class="fa-solid fa-hourglass-half"></i></article>
+        <article class="stat-card"><span>Preparing / Packed</span><b id="stat-preparing">0</b><i class="fa-solid fa-box"></i></article>
+        <article class="stat-card"><span>For Pickup / Delivery</span><b id="stat-ready">0</b><i class="fa-solid fa-truck-fast"></i></article>
+        <article class="stat-card"><span>Paid Transactions</span><b id="stat-paid">0</b><i class="fa-solid fa-circle-check"></i></article>
+      </div>
+      <div class="panel"><div class="panel-head"><div><h3>Latest Incoming Orders</h3><p>Orders submitted by customers from the public website.</p></div><button class="btn outline" data-goto="orders">View all orders</button></div><div id="overview-orders" class="table-wrap"></div></div>
+    </section>
+
+    <section class="view" id="view-orders">
+      <div class="section-intro"><div><h2>Order Management</h2><p>Only staff can confirm, prepare and complete an order.</p></div><div class="filter-row"><input id="order-search" placeholder="Search order no. / customer"><select id="order-filter"><option value="ALL">All active orders</option><option>Pending</option><option>Preparing</option><option>Packed</option><option>Ready to Pick Up</option><option>To Deliver</option></select></div></div>
+      <div id="orders-list" class="order-grid"></div>
+    </section>
+
+    <section class="view" id="view-payment">
+      <div class="section-intro"><div><h2>Counter Payment</h2><p>Enter the queue number printed on the customer's order receipt.</p></div></div>
+      <div class="payment-layout">
+        <div class="panel lookup-panel"><h3><i class="fa-solid fa-magnifying-glass"></i> Find Customer Order</h3><form id="lookup-form" class="lookup-form"><input id="queue-lookup" required placeholder="Enter queue no. e.g. #043"><button class="btn primary">Find Order</button></form><div id="payment-order-result" class="lookup-result empty-state">No order selected yet.</div></div>
+        <div class="panel payment-panel"><h3><i class="fa-solid fa-money-bill-wave"></i> Payment Details</h3><div id="payment-summary" class="empty-state">Find a pickup order first.</div><div class="field"><label>Cash Received (₱)</label><input id="cash-received" type="number" min="0" step="0.01" placeholder="Enter amount received"></div><button id="process-payment-btn" class="btn primary full" disabled><i class="fa-solid fa-check"></i> Process Payment</button></div>
+      </div>
+    </section>
+
+    <section class="view" id="view-inventory">
+      <div class="section-intro"><div><h2>Product Management</h2><p>Manage the bakery catalogue. Saved demo products are shared with the public website in the same browser and origin.</p></div></div>
+      <div class="panel"><div class="panel-head"><div><h3>Products by Category</h3><p>Add a new bread or edit existing product details and stock.</p></div><input id="inventory-search" placeholder="Search products"></div><div id="product-admin-list" class="product-admin-grid"></div></div>
+      <div class="panel"><div class="panel-head"><div><h3>Stock Overview</h3><p>Update quantities for available products.</p></div></div><div id="inventory-list" class="table-wrap"></div></div>
+      <div class="modal hidden" id="product-editor-panel" role="dialog" aria-modal="true" aria-labelledby="product-editor-title">
+        <div class="modal-card product-modal-card">
+          <div class="panel-head"><div><h3 id="product-editor-title">Add New Product</h3><p>Choose an image from your computer, then enter product details.</p></div><button class="btn outline" type="button" id="cancel-product-btn" aria-label="Close">✕</button></div>
+          <form id="product-form"><input type="hidden" id="product-id"><div class="product-form-grid">
+            <div class="field"><label>Product Name</label><input id="product-name" required maxlength="90"></div>
+            <div class="field"><label>Category</label><input id="product-category" list="product-categories" required placeholder="e.g. BREAD & BUNDLES"><datalist id="product-categories"><option>BREADS</option><option>BUNDLES</option><option>PALAMAN SECTION</option><option>KAKANIN SECTION</option><option>CAKES & PASTRIES</option><option>OTHERS</option></datalist></div>
+            <div class="field"><label>Price (₱)</label><input id="product-price" type="number" min="0" step="0.01" required></div>
+            <div class="field"><label>Initial Stock</label><input id="product-stock" type="number" min="0" step="1" value="30" required></div>
+            <div class="field" style="grid-column:1/-1"><label>Description</label><textarea id="product-description" maxlength="220" rows="3" placeholder="Short product description"></textarea></div>
+            <div class="field"><label>Product Image</label><input id="product-image" type="file" accept="image/*"><small>Choose an image from your computer. Demo images are saved in this browser.</small></div>
+            <div class="field"><label>Image Preview</label><img id="product-preview" class="product-preview" src="logo.svg" alt="Product preview"></div>
+          </div><div style="display:flex;gap:8px;margin-top:12px"><button class="btn primary" type="submit">Save Product</button><button class="btn outline" type="button" id="cancel-product-btn-bottom">Cancel</button></div><p id="product-form-message" class="message"></p></form>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" id="view-transactions">
+      <div class="section-intro"><div><h2>Successful Transactions</h2><p>Completed counter payments and delivery payments marked as settled.</p></div></div>
+      <div class="panel"><div class="panel-head"><div><h3>Completed & Cancelled Order History</h3><p>Historical orders remain available for records and queue-number searches.</p></div></div><div id="completed-orders-list" class="table-wrap"></div></div>
+      <div class="panel"><div class="panel-head"><div><h3>Successful Payments</h3><p>Recorded counter payments and settled transactions.</p></div></div><div id="transactions-list" class="table-wrap"></div></div>
+    </section>
+
+    <section class="view" id="view-profile">
+      <div class="section-intro"><div><h2>My Profile</h2><p>Update your staff details and password.</p></div></div>
+      <div class="panel profile-panel"><form id="profile-form">
+        <div class="profile-image-picker"><img id="profile-image-preview" src="logo.svg" alt="Staff profile image"><div><label for="profile-image-input">Profile Picture</label><input id="profile-image-input" type="file" accept="image/*"><small>Choose a photo from your computer. The image preview will appear here.</small></div></div>
+        <div class="profile-fields"><div class="field"><label>Staff Name</label><input id="profile-name" required></div><div class="field"><label>Username</label><input id="profile-username" required></div><div class="field"><label>New Password (leave blank to keep current)</label><input id="profile-password" type="password" minlength="6"></div></div>
+        <button class="btn primary">Save Profile</button><p id="profile-message" class="message"></p></form></div>
+    </section>
+  </main>
+</div>
+
+<div id="payment-success-modal" class="modal hidden"><div class="modal-card receipt-card"><div class="success-mark"><i class="fa-solid fa-check"></i></div><h2>Payment Successful!</h2><p class="muted">The order has been recorded as a successful transaction.</p><div id="success-receipt" class="receipt"></div><button id="close-success" class="btn primary full">Done</button><button id="print-receipt" class="btn outline full">Print Receipt</button></div></div>
+<div id="confirm-modal" class="modal hidden"><div class="modal-card"><h3 id="confirm-title">Confirm action</h3><p id="confirm-copy"></p><div class="modal-actions"><button id="confirm-no" class="btn outline">Cancel</button><button id="confirm-yes" class="btn primary">Confirm</button></div></div></div>
+<script>
+const ORDERS_KEY="geminiBakeryOrdersV1", USERS_KEY="geminiBakeryStaffV1", PAYMENTS_KEY="geminiBakeryPaymentsV1", STOCK_KEY="geminiBakeryStockV1", PRODUCTS_KEY="geminiBakeryProductsV1", ACTIVITY_KEY="geminiBakeryStaffActivityV1";
+const DEFAULT_PRODUCTS=[{"id":1,"name":"Pandesal (Bundle of 10)","category":"BUNDLES","price":50.0,"desc":"Classic warm, fluffy Lucena pandesal rolled in breadcrumbs.","img":"Images/1.jpg","stock":30,"active":true},{"id":2,"name":"Monay (Bundle of 5)","category":"BUNDLES","price":25.0,"desc":"Dense, slightly sweet traditional Filipino bread rolls.","img":"Images/2.jpg","stock":30,"active":true},{"id":3,"name":"Tasty/Sliced Bread (Loaf)","category":"BREADS","price":65.0,"desc":"Soft sliced white loaf bread baked fresh daily.","img":"Images/3.jpg","stock":30,"active":true},{"id":4,"name":"Spanish Bread","category":"BREADS","price":7.0,"desc":"Rolled sweet bread filled with buttery sugary filling.","img":"Images/4.jpg","stock":30,"active":true},{"id":5,"name":"Ensaymada","category":"BREADS","price":8.0,"desc":"Soft brioche topped with grated cheese and butter cream.","img":"Images/5.jpg","stock":30,"active":true},{"id":6,"name":"Pan de Coco","category":"BREADS","price":7.0,"desc":"Sweet bread bun filled with grated sweetened coconut.","img":"Images/6.jpg","stock":30,"active":true},{"id":7,"name":"Cheese Bread","category":"BREADS","price":8.0,"desc":"Bite-sized sweet rolls coated in creamy cheese bits.","img":"Images/7.jpg","stock":30,"active":true},{"id":8,"name":"Star Bread","category":"BREADS","price":7.0,"desc":"Star-shaped dense sweet bread with a light glaze crust.","img":"Images/8.jpg","stock":30,"active":true},{"id":9,"name":"Pinagong","category":"BREADS","price":7.0,"desc":"Famous turtle-shaped firm sweet bread standard.","img":"Images/9.jpg","stock":30,"active":true},{"id":10,"name":"Kababayan","category":"BREADS","price":5.0,"desc":"Gong-shaped moist Filipino muffin cake.","img":"Images/10.jpg","stock":30,"active":true},{"id":11,"name":"Kalihim (Pan de Regla)","category":"BREADS","price":7.0,"desc":"Soft bread filled with signature sweet red pudding.","img":"Images/11.jpg","stock":30,"active":true},{"id":12,"name":"Yema Spread (Jar)","category":"PALAMAN SECTION","price":120.0,"desc":"Rich and creamy sweet custard egg-yolk spread.","img":"Images/12.jpg","stock":30,"active":true},{"id":13,"name":"Coco Jam (Jar)","category":"PALAMAN SECTION","price":95.0,"desc":"Authentic coconut milk and latik caramelized jam.","img":"Images/13.jpg","stock":30,"active":true},{"id":14,"name":"Peanut Butter (Jar)","category":"PALAMAN SECTION","price":60.0,"desc":"Homemade smooth and creamy roasted peanut spread.","img":"Images/14.jpg","stock":30,"active":true},{"id":15,"name":"Margarine Blend","category":"PALAMAN SECTION","price":45.0,"desc":"Rich butter-flavored margarine spread for warm breads.","img":"Images/15.jpg","stock":30,"active":true},{"id":16,"name":"Condensed Milk Dip","category":"PALAMAN SECTION","price":45.0,"desc":"Sweetened condensed dip for breadsticks and rolls.","img":"Images/16.jpg","stock":30,"active":true},{"id":17,"name":"Special Bibingka","category":"KAKANIN SECTION","price":25.0,"desc":"Baked rice cake topped with salted egg and cheese.","img":"Images/16.jpg","stock":30,"active":true},{"id":18,"name":"Puto Lucena (Box)","category":"KAKANIN SECTION","price":10.0,"desc":"Fluffy steamed rice cakes topped with melting cheese.","img":"Images/17.jpg","stock":30,"active":true},{"id":19,"name":"Kutsinta w/ Coconut","category":"KAKANIN SECTION","price":10.0,"desc":"Chewy steamed rice cakes served with freshly grated coconut.","img":"Images/18.jpg","stock":30,"active":true},{"id":20,"name":"Sapin-Sapin Slice","category":"KAKANIN SECTION","price":15.0,"desc":"Layered sticky glutinous rice cake with jackfruit and ube.","img":"Images/19.jpg","stock":30,"active":true},{"id":21,"name":"Cassava Cake","category":"KAKANIN SECTION","price":15.0,"desc":"Grated cassava cake with caramelized custard topping.","img":"Images/20.jpg","stock":30,"active":true},{"id":22,"name":"Maja Blanca","category":"KAKANIN SECTION","price":15.0,"desc":"Creamy coconut milk pudding with sweet corn kernels.","img":"Images/21.jpg","stock":30,"active":true},{"id":23,"name":"Roll Cake (Chocolate)","category":"CAKES & PASTRIES","price":20.0,"desc":"Fluffy chocolate sponge cake roll filled with fudge.","img":"Images/22.jpg","stock":30,"active":true},{"id":24,"name":"Roll Cake (Mocha)","category":"CAKES & PASTRIES","price":20.0,"desc":"Mocha coffee infused sponge roll with buttercream.","img":"Images/23.jpg","stock":30,"active":true},{"id":25,"name":"Roll Cake (Ube)","category":"CAKES & PASTRIES","price":20.0,"desc":"Ube infused sponge roll with ube flavor.","img":"Images/24.jpg","stock":30,"active":true},{"id":26,"name":"Chiffon Cake Slice","category":"CAKES & PASTRIES","price":20.0,"desc":"Light, airy slice of vanilla sponge chiffon cake.","img":"Images/25.jpg","stock":30,"active":true},{"id":27,"name":"Egg Pie (Whole)","category":"CAKES & PASTRIES","price":160.0,"desc":"Rich, creamy egg custard pie in a flaky pastry crust.","img":"Images/26.jpg","stock":30,"active":true},{"id":28,"name":"Egg Pie (Slice)","category":"CAKES & PASTRIES","price":25.0,"desc":"Slice of rich egg custard pie with golden toasted top.","img":"Images/27.jpg","stock":30,"active":true},{"id":29,"name":"Brownies (Box)","category":"CAKES & PASTRIES","price":10.0,"desc":"Fudgy chocolate brownie squares topped with nuts.","img":"Images/28.jpg","stock":30,"active":true},{"id":30,"name":"Banana Bread Loaf","category":"CAKES & PASTRIES","price":20.0,"desc":"Moist banana bread made with sweet local bananas.","img":"Images/29.jpg","stock":30,"active":true},{"id":31,"name":"Chocolate Crinkles (Tub)","category":"CAKES & PASTRIES","price":7.0,"desc":"Soft chocolate fudge cookies rolled in powdered sugar.","img":"Images/30.jpg","stock":30,"active":true},{"id":32,"name":"Uraro Cookies (Pack)","category":"CAKES & PASTRIES","price":80.0,"desc":"Melt-in-your-mouth arrowroot starch cookies.","img":"Images/31.jpg","stock":30,"active":true},{"id":33,"name":"Classic Bread Pudding (Slice)","category":"CAKES & PASTRIES","price":15.0,"desc":"Traditional baked sweet bread pudding with brown sugar and vanilla.","img":"Images/32.jpg","stock":30,"active":true},{"id":34,"name":"Dark Chocolate Pudding","category":"CAKES & PASTRIES","price":15.0,"desc":"Rich and dense dark chocolate infused bread pudding slice.","img":"Images/33.jpg","stock":30,"active":true},{"id":35,"name":"Pineapple Pie Slice","category":"CAKES & PASTRIES","price":25.0,"desc":"Flaky pastry crust filled with sweet pineapple filling.","img":"Images/34.jpg","stock":30,"active":true},{"id":36,"name":"Taisan Cake Slice","category":"CAKES & PASTRIES","price":20.0,"desc":"Soft sponge cake brushed with melted butter and sprinkled with sugar.","img":"Images/35.jpg","stock":30,"active":true},{"id":37,"name":"Pianono Roll","category":"CAKES & PASTRIES","price":15.0,"desc":"Traditional mini jelly roll cake filled with butter and sugar.","img":"Images/36.jpg","stock":30,"active":true}];
+let currentUser=null, signupMode=false, selectedPaymentOrder=null, pendingConfirm=null;
+const $=id=>document.getElementById(id);
+function compressImageFile(file,maxSide=1200,quality=0.82){
+ return new Promise((resolve,reject)=>{
+  const reader=new FileReader();
+  reader.onerror=()=>reject(new Error("Could not read the selected image."));
+  reader.onload=()=>{
+   const img=new Image();
+   img.onerror=()=>reject(new Error("The selected file is not a supported image."));
+   img.onload=()=>{
+    const scale=Math.min(1,maxSide/Math.max(img.width,img.height));
+    const canvas=document.createElement("canvas");
+    canvas.width=Math.max(1,Math.round(img.width*scale));
+    canvas.height=Math.max(1,Math.round(img.height*scale));
+    const ctx=canvas.getContext("2d");
+    ctx.fillStyle="#ffffff";ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.drawImage(img,0,0,canvas.width,canvas.height);
+    resolve(canvas.toDataURL("image/jpeg",quality));
+   };
+   img.src=reader.result;
+  };
+  reader.readAsDataURL(file);
+ });
+}
+const read=(key,fallback=[])=>{try{return JSON.parse(localStorage.getItem(key)||JSON.stringify(fallback))}catch{return fallback}};
+const write=(key,value)=>localStorage.setItem(key,JSON.stringify(value));
+const money=n=>"₱"+Number(n||0).toFixed(2);
+const safe=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const allOrders=()=>read(ORDERS_KEY,[]);
+function showAuthMessage(msg){$("auth-message").textContent=msg}
+function renderAuthMode(){const hasUsers=read(USERS_KEY,[]).length>0;signupMode=!hasUsers; $("auth-title").textContent=signupMode?"Initial Administrator Setup":"Staff Sign In"; $("auth-subtitle").textContent=signupMode?"Create the first administrator account once. The administrator can later manage authorized staff.":"Use your assigned staff username and password to enter the shared operations portal."; $("signup-name-wrap").classList.toggle("hidden",!signupMode); $("staff-name").required=signupMode; $("auth-submit").textContent=signupMode?"Create Administrator":"Sign In"; $("auth-switch-copy").classList.toggle("hidden",hasUsers); $("toggle-auth").textContent="Create administrator"; showAuthMessage("");}
+$("toggle-auth").addEventListener("click",()=>{if(read(USERS_KEY,[]).length===0){signupMode=true;renderAuthMode()}});
+$("auth-form").addEventListener("submit",e=>{e.preventDefault();const username=$("staff-username").value.trim().toLowerCase(),password=$("staff-password").value;let users=read(USERS_KEY,[]);
+ if(signupMode){if(users.length){showAuthMessage("Administrator setup is already complete. Please sign in.");renderAuthMode();return}const name=$("staff-name").value.trim();if(!name){showAuthMessage("Enter the staff name.");return}if(users.some(u=>u.username===username)){showAuthMessage("Username already exists.");return}const user={id:Date.now(),name,username,password,role:users.length?"Staff":"Administrator"};users.push(user);write(USERS_KEY,users);currentUser=user;enterAdmin();return}
+ const user=users.find(u=>u.username===username&&u.password===password);if(!user){showAuthMessage("Incorrect username or password, or account not found.");return}currentUser=user;enterAdmin();
+});
+function enterAdmin(){const activity=read(ACTIVITY_KEY,[]);activity.unshift({id:"SESSION-"+Date.now(),staffId:currentUser.id,staff:currentUser.name,event:"LOGIN",time:new Date().toISOString()});write(ACTIVITY_KEY,activity);currentUser.sessionId=activity[0].id;$("auth-screen").classList.add("hidden");$("admin-app").classList.remove("hidden");$("staff-display").textContent=currentUser.name;$("staff-role").textContent=currentUser.role;$("welcome-staff").textContent=currentUser.name.split(" ")[0];$("today-label").textContent=new Date().toLocaleDateString("en-PH",{dateStyle:"medium"});$("profile-name").value=currentUser.name;$("profile-username").value=currentUser.username;
+ $("profile-image-preview").src=currentUser.profileImage||"logo.svg";
+ selectedProfileImage=currentUser.profileImage||"";
+ renderAll();}
+$("logout-btn").addEventListener("click",()=>{if(currentUser){const activity=read(ACTIVITY_KEY,[]);activity.unshift({id:"SESSION-"+Date.now(),staffId:currentUser.id,staff:currentUser.name,event:"LOGOUT",time:new Date().toISOString(),sessionId:currentUser.sessionId});write(ACTIVITY_KEY,activity)}currentUser=null;$("admin-app").classList.add("hidden");$("auth-screen").classList.remove("hidden");$("auth-form").reset();});
+document.querySelectorAll(".side-link").forEach(b=>b.addEventListener("click",()=>goView(b.dataset.view)));
+document.querySelectorAll("[data-goto]").forEach(b=>b.addEventListener("click",()=>goView(b.dataset.goto)));
+function goView(view){document.querySelectorAll(".side-link").forEach(b=>b.classList.toggle("active",b.dataset.view===view));document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id==="view-"+view));const labels={overview:"Overview",orders:"Order Management",payment:"Counter Payment",inventory:"Product Management",transactions:"Successful Transactions",profile:"My Profile"};$("page-title").textContent=labels[view]||"Admin";if(view==="payment")clearPaymentSelection();}
+function renderAll(){renderOverview();renderOrders();renderInventory();renderTransactions();}
+function statusOptions(o){return o.type==="DELIVERY"?["Pending","Preparing","Packed","To Deliver","Order Received"]:["Pending","Preparing","Packed","Ready to Pick Up"]}
+function renderOverview(){const orders=allOrders().filter(o=>!o.cancelledAt&&!o.paidAt&&o.status!=="Order Received");const paid=read(PAYMENTS_KEY,[]);$("stat-pending").textContent=orders.filter(o=>o.status==="Pending").length;$("stat-preparing").textContent=orders.filter(o=>["Preparing","Packed"].includes(o.status)).length;$("stat-ready").textContent=orders.filter(o=>["Ready to Pick Up","To Deliver"].includes(o.status)).length;$("stat-paid").textContent=paid.length;$("pending-count").textContent=orders.filter(o=>o.status==="Pending").length;
+ const latest=orders.slice(0,6);$("overview-orders").innerHTML=latest.length?tableOrders(latest):'<div class="empty-state">No incoming orders yet.</div>';}
+function tableOrders(rows){return `<table><thead><tr><th>Queue No.</th><th>Customer</th><th>Order Type</th><th>Total</th><th>Status</th></tr></thead><tbody>${rows.map(o=>`<tr><td><strong>${safe(o.queueNo)}</strong><br><small>${safe(o.orderId)}</small></td><td>${safe(o.name)}</td><td>${safe(o.type)}</td><td>${money(o.grandTotal)}</td><td><span class="status status-${String(o.status||"Pending").toLowerCase().replace(/[^a-z]+/g,"-")}">${safe(o.status)}</span></td></tr>`).join("")}</tbody></table>`}
+function renderOrders(){
+ let rows=allOrders();
+ const q=($("order-search")?.value||"").trim().toLowerCase(),filter=$("order-filter")?.value||"ALL";
+ rows=rows.filter(o=>(filter==="ALL"||o.status===filter)&&(!q?(!o.cancelledAt&&!o.paidAt&&o.status!=="Order Received"):(`${o.queueNo} ${o.orderId} ${o.name} ${o.phone||""} ${o.address||""}`).toLowerCase().includes(q)));
+ rows.sort((a,b)=>new Date(b.createdAt||b.timestamp||0)-new Date(a.createdAt||a.timestamp||0));
+ $("orders-list").innerHTML=rows.length?rows.map(o=>{
+   const closed=!!(o.cancelledAt||o.paidAt||o.status==="Order Received"||o.status==="Cancelled");
+   const statusControl=!closed?`<div class="order-actions"><select id="status-${safe(o.orderId)}">${statusOptions(o).map(s=>`<option ${o.status===s?"selected":""}>${s}</option>`).join("")}</select><button class="btn primary" onclick="updateStatus('${safe(o.orderId)}')">Update</button></div>`:"";
+   return `<article class="order-card"><div class="order-top"><div><div class="order-no">${safe(o.queueNo)} · ${safe(o.orderId)}</div><div class="muted">${safe(o.timestamp)} · ${safe(o.type)}</div></div><span class="status status-${String(o.status||"Pending").toLowerCase().replace(/[^a-z]+/g,"-")}">${safe(o.status||"Pending")}</span></div><div class="order-details"><b>${safe(o.name)}</b> · ${safe(o.phone||"")}<br>${safe(o.address||"")}<br>Payment: ${safe(o.paymentMethod||"")} · ${safe(o.paymentStatus||"")}</div><div class="item-lines">${(o.items||[]).map(i=>`${safe(i.name)} × ${i.qty} — ${money(i.price*i.qty)}`).join("<br>")}<hr>Total: <b>${money(o.grandTotal)}</b></div>${closed?'<p class="muted">This order is in history and is no longer editable.</p>':statusControl}</article>`;
+ }).join(""):'<div class="panel empty-state">No orders match this search or filter.</div>';
+}
+
+function deductOrderStockOnce(order){
+ if(!order||order.inventoryDeductedAt)return;
+ const products=getProducts();
+ (order.items||[]).forEach(item=>{
+   const product=products.find(p=>String(p.id)===String(item.id)||String(p.name).toLowerCase()===String(item.name).toLowerCase());
+   if(product)product.stock=Math.max(0,Number(product.stock??30)-Number(item.qty||0));
+ });
+ order.inventoryDeductedAt=new Date().toISOString();
+ write(PRODUCTS_KEY,products);
+}
+function updateStatus(id){const rows=allOrders(),o=rows.find(x=>x.orderId===id);if(!o)return;const next=$("status-"+id).value;const allowed=statusOptions(o);if(!allowed.includes(next)){alert("Invalid status for this order.");return}const old=o.status;o.status=next;const audit=read(ACTIVITY_KEY,[]);audit.unshift({id:"ACT-"+Date.now(),staff:currentUser.name,event:"ORDER STATUS",orderId:o.orderId,detail:old+" → "+next,time:new Date().toISOString()});write(ACTIVITY_KEY,audit);o.updatedAt=new Date().toISOString();if(next==="Order Received"){o.receivedAt=new Date().toISOString();if(o.paymentMethod==="Cash on Delivery"){o.paymentStatus="Awaiting delivery settlement";}deductOrderStockOnce(o);}write(ORDERS_KEY,rows);renderAll();alert(`Order ${o.queueNo}: ${old} → ${next}`);}
+$("order-search").addEventListener("input",renderOrders);$("order-filter").addEventListener("change",renderOrders);
+function clearPaymentSelection(){selectedPaymentOrder=null;$("payment-order-result").innerHTML="No order selected yet.";$("payment-summary").innerHTML="Find a pickup order first.";$("cash-received").value="";$("process-payment-btn").disabled=true;}
+$("lookup-form").addEventListener("submit",e=>{e.preventDefault();const key=$("queue-lookup").value.trim().toUpperCase();const o=allOrders().find(x=>String(x.queueNo).toUpperCase()===key||String(x.orderId).toUpperCase()===key);if(!o){clearPaymentSelection();$("payment-order-result").textContent="Order not found.";return}if(o.type!=="PICKUP"){clearPaymentSelection();$("payment-order-result").textContent="This is a delivery order. Counter pickup payment is for PICKUP orders only.";return}if(o.status!=="Ready to Pick Up"){clearPaymentSelection();$("payment-order-result").textContent="This order must be marked Ready to Pick Up before counter payment.";return}if(o.paidAt||o.cancelledAt){clearPaymentSelection();$("payment-order-result").textContent="This order is already paid or cancelled.";return}selectedPaymentOrder=o;$("payment-order-result").innerHTML=`<b>${safe(o.queueNo)} · ${safe(o.orderId)}</b><br>${safe(o.name)} · ${safe(o.phone)}<br>Status: ${safe(o.status)}<br>Payment method: ${safe(o.paymentMethod)}`;$("payment-summary").innerHTML=`<div class="receipt-row"><span>Subtotal</span><b>${money(o.subtotal)}</b></div><div class="receipt-row"><span>Pickup fee</span><b>${money(o.shippingFee)}</b></div><hr><div class="receipt-row"><strong>Amount Due</strong><strong>${money(o.grandTotal)}</strong></div>`;$("process-payment-btn").disabled=false;});
+$("process-payment-btn").addEventListener("click",()=>{if(!selectedPaymentOrder)return;const cash=Number($("cash-received").value),due=Number(selectedPaymentOrder.grandTotal);if(!Number.isFinite(cash)||cash<due){alert("Cash received must be equal to or greater than the total amount.");return}const btn=$("process-payment-btn");btn.disabled=true;btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Processing...';setTimeout(()=>{const rows=allOrders(),o=rows.find(x=>x.orderId===selectedPaymentOrder.orderId);if(!o||o.paidAt){alert("This order was already processed.");btn.disabled=false;btn.textContent="Process Payment";return}const payment={paymentId:"PAY-"+Date.now(),orderId:o.orderId,queueNo:o.queueNo,customer:o.name,total:due,cashReceived:cash,change:cash-due,method:"Cash at Counter",staff:currentUser.name,paidAt:new Date().toISOString(),items:o.items};o.paidAt=payment.paidAt;o.paymentStatus="Paid";o.status="Order Received";o.paymentId=payment.paymentId;deductOrderStockOnce(o);write(ORDERS_KEY,rows);const payments=read(PAYMENTS_KEY,[]);payments.unshift(payment);write(PAYMENTS_KEY,payments);const audit=read(ACTIVITY_KEY,[]);audit.unshift({id:"ACT-"+Date.now(),staff:currentUser.name,event:"COUNTER PAYMENT",orderId:o.orderId,detail:payment.paymentId,time:payment.paidAt});write(ACTIVITY_KEY,audit);$("success-receipt").innerHTML=`<div class="receipt-row"><b>GEMINI BAKERY EXPRESS</b><b>${safe(o.queueNo)}</b></div><div>Palengke Branch · Lucena City</div><hr>${(o.items||[]).map(i=>`<div class="receipt-row"><span>${safe(i.name)} × ${i.qty}</span><span>${money(i.price*i.qty)}</span></div>`).join("")}<hr><div class="receipt-row"><span>Total Amount</span><b>${money(due)}</b></div><div class="receipt-row"><span>Cash Received</span><b>${money(cash)}</b></div><div class="receipt-row"><span>Change</span><b>${money(cash-due)}</b></div><hr><div>Payment ID: ${safe(payment.paymentId)}</div><div>Cashier: ${safe(currentUser.name)}</div><div>${new Date(payment.paidAt).toLocaleString()}</div><p style="text-align:center">Thank you for purchasing!</p>`;$("payment-success-modal").classList.remove("hidden");clearPaymentSelection();renderAll();btn.innerHTML='<i class="fa-solid fa-check"></i> Process Payment';},850);});
+$("close-success").addEventListener("click",()=>$("payment-success-modal").classList.add("hidden"));$("print-receipt").addEventListener("click",()=>window.print());
+function renderTransactions(){
+ const rows=read(PAYMENTS_KEY,[]);
+ $("transactions-list").innerHTML=rows.length?`<table><thead><tr><th>Payment ID</th><th>Order No.</th><th>Customer</th><th>Total</th><th>Cash</th><th>Change</th><th>Cashier / Date</th></tr></thead><tbody>${rows.map(p=>`<tr><td>${safe(p.paymentId)}</td><td><b>${safe(p.queueNo)}</b></td><td>${safe(p.customer)}</td><td>${money(p.total)}</td><td>${money(p.cashReceived)}</td><td>${money(p.change)}</td><td>${safe(p.staff)}<br><small>${new Date(p.paidAt).toLocaleString()}</small></td></tr>`).join("")}</tbody></table>`:'<div class="empty-state">No successful payments recorded yet.</div>';
+ const history=allOrders().filter(o=>o.status==="Order Received"||o.status==="Received / Completed"||o.status==="Cancelled"||o.cancelledAt).sort((a,b)=>new Date(b.updatedAt||b.createdAt||0)-new Date(a.updatedAt||a.createdAt||0));
+ $("completed-orders-list").innerHTML=history.length?`<table><thead><tr><th>Queue No.</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Date</th></tr></thead><tbody>${history.map(o=>`<tr><td><b>${safe(o.queueNo)}</b><br><small>${safe(o.orderId)}</small></td><td>${safe(o.name)}</td><td>${(o.items||[]).map(i=>`${safe(i.name)} × ${i.qty}`).join("<br>")}</td><td>${money(o.grandTotal)}</td><td><span class="status status-${String(o.status||"Pending").toLowerCase().replace(/[^a-z]+/g,"-")}">${safe(o.status)}</span></td><td>${safe(o.timestamp||"")}</td></tr>`).join("")}</tbody></table>`:'<div class="empty-state">No completed or cancelled orders yet.</div>';
+}
+
+function getProducts(){
+ let products=read(PRODUCTS_KEY,null);
+ if(!Array.isArray(products)||!products.length){products=DEFAULT_PRODUCTS;write(PRODUCTS_KEY,products)}
+ let migrated=false;
+ products.forEach(p=>{
+   if(p.category==="BREAD & BUNDLES"){
+     p.category=/\(Bundle of/i.test(p.name||"")?"BUNDLES":"BREADS";
+     migrated=true;
+   }
+ });
+ if(migrated)write(PRODUCTS_KEY,products);
+ return products;
+}
+function getStock(){return getProducts().map(p=>({id:p.id,name:p.name,price:p.price,qty:Number(p.stock??30)}))}
+function renderInventory(){
+ const q=($("inventory-search")?.value||"").toLowerCase();
+ const rows=getProducts().filter(p=>(p.name||"").toLowerCase().includes(q)||(p.category||"").toLowerCase().includes(q));
+ const grouped={};rows.forEach(p=>(grouped[p.category||"OTHERS"]??=[]).push(p));
+ $("product-admin-list").innerHTML=Object.keys(grouped).sort().map(category=>`<section class="product-category-section"><div class="product-category-heading"><h3>${safe(category)}</h3><button class="btn primary category-add-btn" type="button" data-category="${safe(category)}"><i class="fa-solid fa-plus"></i> Add New Product</button></div><div class="product-admin-grid">${grouped[category].map(p=>`<article class="admin-product-card"><img src="${safe(p.img||"logo.svg")}" alt="${safe(p.name)}" onerror="this.src='logo.svg'"><div class="pbody"><h4>${safe(p.name)}</h4><p>${safe(p.desc||"")}</p><b>${money(p.price)}</b><small style="display:block;color:#777;margin-top:4px">ID: ${safe(p.id)} · Stock: ${Number(p.stock??30)}</small><div class="actions"><button class="btn outline" onclick="editProduct('${safe(p.id)}')">Edit</button><button class="btn outline" onclick="deleteProduct('${safe(p.id)}')">Delete</button></div></div></article>`).join("")}</div></section>`).join("")||'<div class="empty-state">No products found.</div>';
+ $("inventory-list").innerHTML=`<table><thead><tr><th>Product</th><th>Price</th><th>Stock Qty</th><th>Stock Status</th><th>Action</th></tr></thead><tbody>${rows.map(p=>`<tr><td><b>${safe(p.name)}</b></td><td>${money(p.price)}</td><td><input class="stock-input" type="number" min="0" value="${Number(p.stock??30)}" id="stock-${safe(p.id)}"></td><td class="${Number(p.stock??30)<=5?"low-stock":""}">${Number(p.stock??30)===0?"Out of stock":Number(p.stock??30)<=5?"Low stock":"Available"}</td><td><button class="btn outline" onclick="saveStock('${safe(p.id)}')">Save</button></td></tr>`).join("")}</tbody></table>`;
+}
+
+function saveStock(id){const rows=getProducts(),p=rows.find(x=>String(x.id)===String(id));const qty=Number($("stock-"+id).value);if(!p||!Number.isInteger(qty)||qty<0){alert("Enter a valid stock quantity.");return}p.stock=qty;write(PRODUCTS_KEY,rows);const logs=read(ACTIVITY_KEY,[]);logs.unshift({id:"ACT-"+Date.now(),staff:currentUser?.name||"Staff",event:"UPDATE STOCK",detail:p.name+" · "+qty,time:new Date().toISOString()});write(ACTIVITY_KEY,logs);renderInventory();}
+function openProductEditor(product=null, category=null){
+ $("product-editor-panel").classList.remove("hidden");
+ $("product-editor-title").textContent=product?"Edit Product":"Add Product to "+(category||"Category");
+ $("product-id").value=product?.id??"";
+ $("product-name").value=product?.name??"";
+ $("product-category").value=product?.category??category??"BREAD & BUNDLES";
+ $("product-category").readOnly=!product && !!category;
+ $("product-price").value=product?.price??"";
+ $("product-stock").value=product?.stock??30;
+ $("product-description").value=product?.desc??"";
+ $("product-image").value="";
+ selectedProductImage="";
+ $("product-preview").src=product?.img??"logo.svg";
+ $("product-form-message").textContent="";
+}
+let selectedProductImage="";
+$("product-admin-list").addEventListener("click",e=>{
+ const btn=e.target.closest(".category-add-btn");
+ if(btn)openProductEditor(null,btn.dataset.category);
+});
+$("cancel-product-btn").addEventListener("click",()=>$("product-editor-panel").classList.add("hidden"));
+$("cancel-product-btn-bottom").addEventListener("click",()=>$("product-editor-panel").classList.add("hidden"));
+$("product-image").addEventListener("change",()=>{
+ const file=$("product-image").files?.[0];if(!file)return;
+ if(!file.type.startsWith("image/")){alert("Please choose an image file.");$("product-image").value="";return}
+ if(file.size>3*1024*1024){alert("Please choose an image under 3 MB for the browser demo.");$("product-image").value="";return}
+ compressImageFile(file).then(data=>{selectedProductImage=data;$("product-preview").src=data;}).catch(err=>alert(err.message));
+});
+$("product-form").addEventListener("submit",e=>{
+ e.preventDefault();
+ const rows=getProducts(),existingId=$("product-id").value;
+ const id=existingId||("GB-"+Date.now().toString(36).toUpperCase());
+ const existing=rows.find(p=>String(p.id)===String(existingId));
+ const image=selectedProductImage||existing?.img||"";
+ const product={id,name:$("product-name").value.trim(),category:$("product-category").value.trim().toUpperCase(),price:Number($("product-price").value),desc:$("product-description").value.trim(),img:image,stock:Number($("product-stock").value),active:true};
+ if(!product.name||!product.category||!Number.isFinite(product.price)||product.price<0||!Number.isInteger(product.stock)||product.stock<0){$("product-form-message").textContent="Please check the product details.";return}
+ if(!image){$("product-form-message").textContent="Please select a product image.";return}
+ if(existing){rows[rows.findIndex(p=>String(p.id)===String(existingId))]=product}else rows.unshift(product);
+ write(PRODUCTS_KEY,rows);
+ const audit=read(ACTIVITY_KEY,[]);audit.unshift({id:"ACT-"+Date.now(),staff:currentUser?.name||"Staff",event:existing?"EDIT PRODUCT":"ADD PRODUCT",detail:product.name,time:new Date().toISOString()});write(ACTIVITY_KEY,audit);
+ $("product-editor-panel").classList.add("hidden");renderInventory();
+ alert("Product saved. It will appear in the public catalogue when both pages use the same browser and website address.");
+});
+
+function editProduct(id){const p=getProducts().find(x=>String(x.id)===String(id));if(p){selectedProductImage="";openProductEditor(p)}}
+function deleteProduct(id){if(!confirm("Delete this product from the demo catalogue?"))return;const product=getProducts().find(p=>String(p.id)===String(id));write(PRODUCTS_KEY,getProducts().filter(p=>String(p.id)!==String(id)));const logs=read(ACTIVITY_KEY,[]);logs.unshift({id:"ACT-"+Date.now(),staff:currentUser?.name||"Staff",event:"DELETE PRODUCT",detail:product?.name||id,time:new Date().toISOString()});write(ACTIVITY_KEY,logs);renderInventory();}
+$("inventory-search").addEventListener("input",renderInventory);
+
+let selectedProfileImage="";
+$("profile-image-input").addEventListener("change",()=>{
+ const file=$("profile-image-input").files?.[0];if(!file)return;
+ if(!file.type.startsWith("image/")){alert("Please select an image file.");$("profile-image-input").value="";return}
+ if(file.size>2*1024*1024){alert("Please choose a profile image under 2 MB for this browser demo.");$("profile-image-input").value="";return}
+ compressImageFile(file,900,0.8).then(data=>{selectedProfileImage=data;$("profile-image-preview").src=data;}).catch(err=>alert(err.message));
+});
+$("profile-form").addEventListener("submit",e=>{
+ e.preventDefault();
+ const users=read(USERS_KEY,[]),u=users.find(x=>x.id===currentUser.id);if(!u)return;
+ const username=$("profile-username").value.trim().toLowerCase();
+ if(users.some(x=>x.id!==u.id&&x.username===username)){$("profile-message").textContent="Username is already taken.";return}
+ u.name=$("profile-name").value.trim();u.username=username;
+ if($("profile-password").value)u.password=$("profile-password").value;
+ if(selectedProfileImage)u.profileImage=selectedProfileImage;
+ write(USERS_KEY,users);currentUser=u;
+ $("staff-display").textContent=u.name;$("welcome-staff").textContent=u.name.split(" ")[0];
+ $("profile-image-preview").src=u.profileImage||"logo.svg";
+ $("profile-password").value="";$("profile-message").textContent="Profile updated successfully.";
+ const audit=read(ACTIVITY_KEY,[]);audit.unshift({id:"ACT-"+Date.now(),staff:u.name,event:"UPDATE PROFILE",time:new Date().toISOString()});write(ACTIVITY_KEY,audit);
+});
+$("confirm-no").addEventListener("click",()=>{$("confirm-modal").classList.add("hidden");pendingConfirm=null});$("confirm-yes").addEventListener("click",()=>{if(pendingConfirm)pendingConfirm();$("confirm-modal").classList.add("hidden");pendingConfirm=null});
+window.addEventListener("storage",e=>{if([ORDERS_KEY,PAYMENTS_KEY,STOCK_KEY,PRODUCTS_KEY].includes(e.key)&&currentUser)renderAll()});
+renderAuthMode();
+</script>
+</body></html>

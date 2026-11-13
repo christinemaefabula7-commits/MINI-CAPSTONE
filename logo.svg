@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" width="100%" height="100%">
+  <rect width="100%" height="100%" fill="#b91c1c" rx="15" />
+  <g text-anchor="middle">
+    <text x="252" y="102" font-family="'Impact', 'Arial Black', sans-serif" font-size="88" fill="#7f1d1d" font-weight="900" letter-spacing="2">GEMINI</text>
+    <text x="250" y="100" font-family="'Impact', 'Arial Black', sans-serif" font-size="88" fill="#facc15" font-weight="900" letter-spacing="2" stroke="#ffffff" stroke-width="2">GEMINI</text>
+    <text x="252" y="157" font-family="'Brush Script MT', 'Georgia', cursive" font-size="58" fill="#7f1d1d" font-weight="bold">Bakery</text>
+    <text x="250" y="155" font-family="'Brush Script MT', 'Georgia', cursive" font-size="58" fill="#ffffff" font-weight="bold">Bakery</text>
+    <rect x="175" y="165" width="150" height="24" fill="#facc15" rx="5" stroke="#b91c1c" stroke-width="2" />
+    <text x="250" y="181" font-family="'Arial', sans-serif" font-size="14" fill="#b91c1c" font-weight="bold">SINCE 1975</text>
+  </g>
+</svg>
